@@ -57,15 +57,18 @@ $(document).on("click",".category-button", function() {
     app.apiRequest(category);
 });
 
-// Set click function  to play/pause gifs
-$(document).on("click", ".gif", function(){
-    // toggle still image with live gif.  _s suffix indicates still image
-    var src = $(this).attr("src");
-    if(src.indexOf("200w_s") !== -1){
-        src = src.replace("200w_s","200w");
-    } else {
-        src = src.replace("200w","200w_s");
-    }
-    $(this).attr("src", src);
-});
+// Set mouseover functions to play/pause gifs
+$(document).on("mouseover", ".gif", function(){
+    var $this = $(this);
+    // replaces still image src with live gif. _s suffix indicates still image
+    var src = $this.attr("src").replace("200w_s","200w");
+    $this.attr("src", src);
+})
+
+$(document).on("mouseout", ".gif", function(){
+    var $this = $(this);
+    // replaces live gif src with still image. _s suffix indicates still image
+    var src = $this.attr("src").replace("200w","200w_s");
+    $this.attr("src", src);
+})
 
