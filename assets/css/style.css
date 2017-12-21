@@ -1,9 +1,7 @@
 body {
     background-image: url("../images/memphis-colorful.png");
-    /* font-family: 'Work Sans', sans-serif; */
     font-family: 'Ubuntu', sans-serif;
-    
-    /* font-family: 'VT323', monospace; */
+    margin-bottom: 80px;
 }
 
 h2 {
@@ -31,10 +29,11 @@ nav {
 
 .categories {
     background-color: #FFF;
-    width: 80%;
+    width: 70%;
     border: 1px solid #222222;
     border-radius: 10px;
     margin: 50px auto;
+    padding-top:10px;
 }
 
 .category-button {
@@ -44,14 +43,24 @@ nav {
     /* border: 2px solid #42E34D; */
     /* color: #42E34D; */
     border-radius: 8px;
-    
+}
 
+.gifs {
+    column-count: 6;
+    column-gap: 10px;
+    /* background-color: #fff; */
+    width: 70%;
+    margin: 0 auto;
+}
+
+.gif {
+    margin-top: 5px;
 }
 
 
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     text-align: center;
     width: 100%;
