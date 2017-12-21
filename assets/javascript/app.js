@@ -2,11 +2,7 @@ var app = {
     categories: ["Actions", "Animals","Emotions","Food & Drink", "Holidays", "People", "Sports", "Technology"],
     displayButtons: function() {
         for(var i = 0; i < this.categories.length; i++) {
-            var categoryButton = $("<button>").addClass("category-button");
-            // attribute used for search query
-            categoryButton.attr("data-category", this.categories[i]);
-            categoryButton.text(this.categories[i]);
-            $(".categories").append(categoryButton);
+            app.addButton(this.categories[i]);
         }
     },
     apiRequest: function(searchQuery) {
@@ -26,19 +22,35 @@ var app = {
         // hide while loading gifs
         gifContainer.hide();
         for(var i = 0; i < data.length; i++) {
-            var gifElement = $("<div>");
-            gifElement.append($("<img/>",{src: data[i].images.fixed_width_still.url, class: "gif"}));
-            gifElement.append($("<p>").text(`Rating: ${data[i].rating.toUpperCase()}`))
-            gifContainer.append(gifElement);
+            var gifDiv = $("<div>").addClass("gif-div");
+            gifDiv.append($("<img/>",{src: data[i].images.fixed_width_still.url, class: "gif"}));
+            gifDiv.append($("<p>").text(`Rating: ${data[i].rating.toUpperCase()}`))
+            gifContainer.append(gifDiv);
         }
         gifContainer.show();
+    },
+    addButton: function(text) {
+        var categoryButton = $("<button>").addClass("category-button");
+        // attribute used for search query
+        categoryButton.attr("data-category", text);
+        categoryButton.text(text);
+        $(".button-list").append(categoryButton);
     }
 }
 
 // Show default buttons
 app.displayButtons();
 
+// Add new category button event
+$("#add-button").on("click", function(){
+    var newCategory = $("#add-input").val();
+    // only add if user typed something
+    if(newCategory) {
+       app.addButton(newCategory);
+    }
+});
 
+// Button click event to make the API call
 $(document).on("click",".category-button", function() {
     var category = $(this).attr("data-category");
     app.apiRequest(category);

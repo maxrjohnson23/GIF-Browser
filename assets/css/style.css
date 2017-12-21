@@ -46,13 +46,14 @@ nav {
 .gifs {
     column-count: 6;
     column-gap: 10px;
-    background-color: #fff;
     width: 70%;
     margin: 0 auto;
 }
 
-.gif {
+.gif-div {
     margin-top: 5px;
+    background-color: #fff;
+    display: inline-block;
 }
 
 footer {
