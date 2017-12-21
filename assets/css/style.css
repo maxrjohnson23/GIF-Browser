@@ -9,7 +9,7 @@ h2 {
 }
 
 header {
-    background-color: #222222;
+    background-color: #222;
 }
 
 #logo {
@@ -30,17 +30,24 @@ nav {
 .categories {
     background-color: #FFF;
     width: 70%;
-    border: 1px solid #222222;
+    border: 1px solid #222;
     border-radius: 10px;
     margin: 50px auto;
     padding-top:10px;
 }
 
 .category-button {
+    font-size: 16px;
+    /* font-weight: bold; */
     padding: 10px;
     margin: 20px 10px;
     background-color: #e4e4e4;
     border-radius: 8px;
+}
+
+.category-button:hover {
+    background-color: #222;
+    color: #fff;
 }
 
 .gifs {
@@ -56,6 +63,28 @@ nav {
     display: inline-block;
 }
 
+#add-input {
+    margin-bottom: 15px;
+    padding:4px;
+    border-radius: 4px;
+}
+
+#add-button {
+    background-color: #222;
+    color: #FFF;
+    border: 1px solid #222;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+#add-button:hover {
+    background-color: #222;
+    color: #42E34D;
+    border-color: #42E34D;
+}
+
+button:focus {outline:0;}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -67,6 +96,6 @@ footer {
 
 footer small {
     line-height: 40px;
-    color: #42E34D;
+    color: #FFF;
     font-size: 12px;
 }

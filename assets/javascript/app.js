@@ -9,7 +9,8 @@ var app = {
         // Encode query string for spaces and special characters
         var encodedQuery = encodeURIComponent(searchQuery);
         console.log(`Searching for ${encodedQuery}`);
-        var queryUrl = `https://api.giphy.com/v1/gifs/search?api_key=psbvNW4hbQGb5pxrjJ1nxEpppgE9jFT4&q=${searchQuery}&limit=25&offset=0&rating=G&lang=en`;
+        // fetch 25 gifs based on search string
+        var queryUrl = `https://api.giphy.com/v1/gifs/search?api_key=psbvNW4hbQGb5pxrjJ1nxEpppgE9jFT4&q=${searchQuery}&limit=25&offset=0&lang=en`;
         $.ajax({url: queryUrl, method: "GET"}).done(function(data){
             console.log(data);
             app.displayGifs(data.data);
@@ -43,9 +44,11 @@ app.displayButtons();
 
 // Add new category button event
 $("#add-button").on("click", function(){
-    var newCategory = $("#add-input").val();
+    var newCategory = $("#add-input").val().toLowerCase();
     // only add if user typed something
     if(newCategory) {
+        // Uppercase first letter
+        newCategory = newCategory.charAt(0).toUpperCase() + newCategory.slice(1);
        app.addButton(newCategory);
     }
 });
