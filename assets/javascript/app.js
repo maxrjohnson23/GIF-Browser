@@ -26,8 +26,10 @@ var app = {
         // hide while loading gifs
         gifContainer.hide();
         for(var i = 0; i < data.length; i++) {
-            var gif = ($("<img/>",{src: data[i].images.fixed_width_still.url, class: "gif"}));
-            gifContainer.append(gif);
+            var gifElement = $("<div>");
+            gifElement.append($("<img/>",{src: data[i].images.fixed_width_still.url, class: "gif"}));
+            gifElement.append($("<p>").text(`Rating: ${data[i].rating.toUpperCase()}`))
+            gifContainer.append(gifElement);
         }
         gifContainer.show();
     }
