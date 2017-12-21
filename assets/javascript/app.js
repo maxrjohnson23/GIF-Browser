@@ -3,6 +3,7 @@ var app = {
     displayButtons: function() {
         for(var i = 0; i < this.categories.length; i++) {
             var categoryButton = $("<button>").addClass("category-button");
+            // attribute used for search query
             categoryButton.attr("data-category", this.categories[i]);
             categoryButton.text(this.categories[i]);
             $(".categories").append(categoryButton);
@@ -15,15 +16,20 @@ var app = {
         var queryUrl = `https://api.giphy.com/v1/gifs/search?api_key=psbvNW4hbQGb5pxrjJ1nxEpppgE9jFT4&q=${searchQuery}&limit=25&offset=0&rating=G&lang=en`;
         $.ajax({url: queryUrl, method: "GET"}).done(function(data){
             console.log(data);
-            app.displayGifs(data);
+            app.displayGifs(data.data);
         });
     },
     displayGifs: function(data) {
-        var gif = data.data[0];
-        var gifElement = $("<div>").addClass("gif");
-        console.log(gif.embed_url);
-        gifElement.append($("<img/>",{src: gif.embed_url}));
-        $(".gifs").append(gifElement);
+
+        // clear out any previous searches
+        var gifContainer = $(".gifs").empty();
+        // hide while loading gifs
+        gifContainer.hide();
+        for(var i = 0; i < data.length; i++) {
+            var gif = ($("<img/>",{src: data[i].images.fixed_width_still.url, class: "gif"}));
+            gifContainer.append(gif);
+        }
+        gifContainer.show();
     }
 }
 
@@ -35,4 +41,19 @@ $(document).on("click",".category-button", function() {
     var category = $(this).attr("data-category");
     app.apiRequest(category);
 });
+
+// Set mouseover functions to play/pause gifs
+$(document).on("mouseover", ".gif", function(){
+    var $this = $(this);
+    // replaces still image src with live gif
+    var src = $this.attr("src").replace("200w_s","200w");
+    $this.attr("src", src);
+})
+
+$(document).on("mouseout", ".gif", function(){
+    var $this = $(this);
+    // replaces live gif src with still image
+    var src = $this.attr("src").replace("200w","200w_s");
+    $this.attr("src", src);
+})
 
