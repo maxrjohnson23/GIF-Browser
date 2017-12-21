@@ -1,6 +1,9 @@
+html * {
+    font-family: 'Armata', cursisans-serif;
+}
+
 body {
     background-image: url("../images/memphis-colorful.png");
-    font-family: 'Ubuntu', sans-serif;
     margin-bottom: 80px;
 }
 
@@ -19,7 +22,7 @@ header {
 
 #giphy {
     position: absolute;
-    right:0;
+    right: 0;
     top: 0;
 }
 
@@ -33,12 +36,12 @@ nav {
     border: 1px solid #222;
     border-radius: 10px;
     margin: 50px auto;
-    padding-top:10px;
+    padding-top: 10px;
 }
 
 .category-button {
     font-size: 16px;
-    /* font-weight: bold; */
+    font-weight: bold;
     padding: 10px;
     margin: 20px 10px;
     background-color: #e4e4e4;
@@ -65,7 +68,7 @@ nav {
 
 #add-input {
     margin-bottom: 15px;
-    padding:4px;
+    padding: 4px;
     border-radius: 4px;
 }
 
@@ -83,7 +86,9 @@ nav {
     border-color: #42E34D;
 }
 
-button:focus {outline:0;}
+button:focus {
+    outline: 0;
+}
 
 footer {
     position: fixed;
