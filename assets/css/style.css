@@ -1,5 +1,7 @@
-html * {
+html {
     font-family: 'Armata', cursisans-serif;
+    position: relative; 
+    min-height: 100%; 
 }
 
 body {
@@ -91,7 +93,7 @@ button:focus {
 }
 
 footer {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     text-align: center;
     width: 100%;
